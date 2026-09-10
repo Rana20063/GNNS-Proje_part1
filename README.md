@@ -14,7 +14,7 @@ Proje, **GPS L1 C/A sinyallerine yönelik akıllı aldatma (spoofing) saldırıl
 
 Projeyi bir bütün olarak dört aşamada düşünebiliriz. Her aşama bir öncekinin üzerine bir "katman" ekliyor — yani önce sahte bir GPS ortamı kuruyoruz, sonra bu ortamda saldırıyı fiziksel olarak bastırmaya çalışıyoruz, sonra sinyal seviyesinde saldırıyı tespit ediyoruz, en son da konum hesabında hâlâ sızan hataları temizliyoruz. Biz şu an sadece **1. aşamadayız**.
 
-**Aşama 1 — Sahte Bir Uydu Ortamı Kurmak **
+**Aşama 1 — Sahte Bir Uydu Ortamı Kurmak**
 Önce gerçek bir GPS sinyalinin nasıl göründüğünü bilgisayarda üretiyoruz: uydunun kod imzası (PRN), gerçek bir alıcının göreceği frekans kayması, gecikme gibi bozulmalar. Sonra bu temiz ortama bir de sahte cihaz ekliyoruz: zamanla gücünü artırıp alıcıyı kandırmaya çalışan bir sahte sinyal (spoofer) ve doğal bir yansıma (multipath). Yani bu aşamanın amacı, sonraki aşamaları test edebileceğimiz gerçekçi bir modelleme ortamı hazırlamak.
 
 **Aşama 2 — Anten ile Saldırıyı Fiziksel Olarak Bastırmak (CRPA)**
