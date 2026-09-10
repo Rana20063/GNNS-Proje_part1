@@ -32,7 +32,7 @@ Bu Repo'da 1. Aşama için bir simülasyon oluşturdum:
 
 ---
 
-# 3) Sistemin Beş Temel Bileşeni ve Dosyalar
+# 3. Sistemin Beş Temel Bileşeni ve Dosyalar
 ## Proje Dosyaları
 
 
@@ -188,7 +188,7 @@ I² + Q² = [baseband×cos(θ)]² + [baseband×sin(θ)]²
 
 ---
 
-## 4. Bileşenlerin Bir Arada Çalışması
+# 4. Bileşenlerin Bir Arada Çalışması
 
 Bu beş bileşen, işlem hattında şu sırayla birleşir:
 
@@ -209,7 +209,7 @@ Simülasyon çalışırken tespit edilen korelasyon tepe sayısının zaman içi
 
 ---
 
-## 5. Teknik Terimler Açıklama
+# 5. Teknik Terimler Açıklama
 
 | Terim | Anlam |
 |---|---|
