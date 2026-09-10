@@ -32,7 +32,7 @@ Bu Repo'da 1. Aşama için bir simülasyon oluşturdum:
 
 ---
 
-#  Sistemin Beş Temel Bileşeni ve Dosyalar
+# 3) Sistemin Beş Temel Bileşeni ve Dosyalar
 ## Proje Dosyaları
 
 
