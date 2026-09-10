@@ -35,8 +35,6 @@ Bu Repo'da 1. Aşama için bir simülasyon oluşturdum:
 #  Sistemin Beş Temel Bileşeni ve Dosyalar
 ## Proje Dosyaları
 
-- **`adim1_basit_antispoofing.slx`**
-  Projenin kalbi olan ana Simulink simülasyon dosyasıdır. Tüm RF ortamını, çoklu yol (multipath) yansımalarını, dinamik spoofer saldırısını ve alıcı gürültüsünü görsel bloklar halinde barındırır ve çalıştırır.
 
 - **`build_simulink_model.m`**
   `adim1_basit_antispoofing.slx` modelini arayüze hiç dokunmadan sıfırdan ve otonom olarak inşa eden "wrapper" (sarmalayıcı) scripttir. Taşınabilirlik sorunlarını çözer ve sistem parametrelerini (IF, Doppler, drift hızı) kurgular.
