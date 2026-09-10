@@ -51,7 +51,7 @@ Bu dosyada 1. Aşama için bir simülasyon oluşturdum:
   Üretilen baz bant PRN çiplerini alıp, ara frekansa (IF) ve Doppler kaymasına sahip fiziksel taşıyıcı dalgalara (RF ortamına) dönüştüren sinyal modülasyon dosyasıdır.
 
 - **`main_basic_simulation.m`**
-  Tüm sistemi Simulink'e taşımadan önce saf MATLAB koduyla hızlıca test etmek, parametreleri doğrulamak ve korelasyon ile tepe tespit yeteneklerini görmek için kullanılan ana başlatıcı test betiğidir.
+  Tüm sistemi Simulink'e taşımadan önce saf MATLAB koduyla hızlıca test etmek, parametreleri doğrulamak ve korelasyon ile tepe tespit yeteneklerini görmek için kullanılan ana başlatıcı test betiğidir. İlk önce kontrol amaçlı çalıştırılması önerilir.
 
 - **`run_simulink_correlation.m`**
   Simulink çalışırken her 10.000 veride bir çağrılan köprü fonksiyondur. Gelen IF sinyaline donanım seviyesinde I/Q demodülasyonu uygulayarak taşıyıcıyı yok eder (Envelope Detector) ve ortamdaki sahte/gerçek sinyal sayısını hesaplayıp Simulink'e geri gönderir.
@@ -201,6 +201,13 @@ Bu beş bileşen, işlem hattında şu sırayla birleşir:
 5. Anten toplama noktasında bu üç sinyal (otantik + spoofer + multipath) toplanır ve gürültüyle karışır.
 6. **I/Q Demodülasyon ve Zarf Dedektörü**, bu karışık sinyali taşıyıcıdan arındırıp temiz bir korelasyon profiline dönüştürür.
 7. Korelasyon tabanlı tepe dedektörü (`findpeaks`), bu temiz profildeki tepe sayısını sayar: **1 tepe = normal, 2+ tepe = spoofing/multipath şüphesi**.
+
+## Simulink  Scope Output yorumlanması
+Simülasyon çalışırken tespit edilen korelasyon tepe sayısının zaman içindeki değişimi, senaryonun dinamik yapısını matematiksel olarak doğrular. Grafiğin 1'e hiç uğramadan basamaklar halinde 0'dan 2'ye, ardından 3'e çıkması şu şekilde açıklanır:
+
+* **0 Seviyesi:** Simülasyonun ilk anlarıdır. Henüz veri tamponu dolmadığı veya sistem kilitlenmediği için tespit yapılamaz.
+* **2 Seviyesi (Neden 1 Değil?):** Ortamda en başından beri kasıtlı bir **Multipath** (yankı) sinyali bulunmaktadır. Başlangıçta **Spoofer** sinyali, **Otantik** sinyal ile tamamen aynı fazda olduğu için bu ikisi üst üste binerek tek bir tepe gibi algılanır. Yankı (Multipath) sinyali ise ayrı bir tepe oluşturur. Bu nedenle sistem ilk ölçümde 1 değil, 2 tepe (Otantik+Spoofer ve Multipath) tespit eder.
+* **3 Seviyesi (Saldırının Belirginleşmesi):** İlerleyen zamanlarda Dinamik Spoofer modeli, alıcıyı kendi üzerine çekmek için fazını kaydırmaya (drift) başlar. Fazlar ayrıştığı anda, üst üste binen tepe ikiye bölünür. Sistem artık **Otantik**, **kaymış Spoofer** ve **Multipath** olmak üzere birbirinden bağımsız 3 farklı sinyali tespit ederek saldırıyı tamamen açığa çıkarır .
 
 ---
 
